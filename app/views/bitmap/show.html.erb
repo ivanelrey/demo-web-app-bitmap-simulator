@@ -1,21 +1,26 @@
 <h1 align="center"> <span class="label label-default">DEMO BITMAP SIMULATOR</span></h1>
 
-<div class="row" style="margin-top: 20px">
+
+<div class="row my_row" >
   <%= form_for :input,:url => { :controller => "bitmap", :action => "run_commands" }, :html => {:method => :post} do |f| %>
   <div class="col-lg-5 col-md-5 col-sm-5">
-  	<h3 align="center"><span class="label label-success">Input Commads</span></h3>
+  	<h3 align="center">
+    <span class="label label-success">Input Commads</span>
+    <span class="glyphicon glyphicon glyphicon-info-sign btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" aria-hidden="true"></span>
+    </h3>
     <div class="input-group">
       <span class="input-group-addon">
       </span>
-      <%= f.text_area :commands, class: "form-control", style: "resize: none; height: 420px", :value => @commands_in_show %>
+      <%= f.text_area :commands, class: "form-control", style: "resize: none; height: 420px;", :value => @commands_in_show %>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 
+  <!-- Execute button -->
   <div class="col-lg-2 col-md-2 col-sm-2" align="center" style="margin-top: 10%">
     <div class="input-group">
       <span class="">
       </span>
-	  <%= f.submit "RUN", class: "btn btn-default" do%>
+	  <%= f.submit "EXECUTE INPUT", class: "btn btn-default" do%>
 	  <% end %>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
@@ -26,8 +31,8 @@
     <div class="input-group">
       <span class="input-group-addon">
       </span>
-      <div class="form-control",  style="overflow-y:auto; white-space:nowrap; min-height: 420px;" >
-      <% if @output.kind_of?(Array) %>
+      <div class="form-control",  style="overflow-y:auto; min-height: 420px;" >
+      <% if @output.kind_of?(Array) %> <!-- If the returned values is an array (errors or bitmap) -->
       	<% @output.each do |row| %>
         	<li style="list-style: none;"><%= row %></li>
 	    <% end %>
@@ -38,3 +43,38 @@
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
+
+<footer style="margin-top: 20px; margin-right: 50px;">
+  <div class="pull-right">
+    Copyright &copy; 2017 <b>Bitmap Editor</b> by <a href="https://github.com/ivanelrey" >Ivane Gomarteli.</a>
+  </div>
+  <div class="clearfix"></div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Guide</h4>
+      </div>
+      <div class="modal-body">
+        <u>Commands (Params)</u><br/>
+        <li>I (M N) Create a new M x N image with all pixels coloured white (O).</li>
+        <li>L (X Y C) Colours the pixel (X,Y) with colour C.</li>
+        <li>V (X Y1 Y2 W) Draw a vertical segment of colour C in column X between rows Y1 and Y2 (inclusive).</li>
+        <li>H (X1 X2 Y C) Draw a horizontal segment of colour C in row Y between columns X1 and X2 (inclusive).</li>
+        <li>D (X1 Y1 X2 Y2 I) Draw a diagonal line of colour I, start from X1,Y1 and end at X2,Y2</li>
+        <li>C (-) Clears the table, setting all pixels to white (O).</li>
+        <li>S (-) Show the contents of the current image.</li>
+        <br/>
+        <u>Documentation</u><br/>
+        <a href="https://github.com/ivanelrey/bitmap-simulator" target="blank">Bitmap Simulator -  Github </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
