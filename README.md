@@ -1,24 +1,7 @@
-# README
+# Bitmap edito demo web applicaion
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Navigate to the original [Bitmap Editor](https://github.com/ivanelrey/bitmap-simulator) repository.
 
-Things you may want to cover:
+# Demo application
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[https://demo-bitmap-editor.herokuapp.com/](https://demo-bitmap-editor.herokuapp.com/)
