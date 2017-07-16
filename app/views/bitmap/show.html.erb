@@ -33,7 +33,11 @@
         <% if @output.all? { |e| e.kind_of? Array } %> <!-- If the array is 2d it means that it is a bitmap -->
         	<% @output.each do |row| %>
             <% row.each do |cell| %>
-              <%= cell %> 
+              <% if cell == 'O' %>
+                <%= cell %>
+              <% else %>
+                <b><%= cell %></b>
+              <% end %>
             <%end %>
             <br>
           <% end %>
@@ -82,7 +86,34 @@
         </ul>
         <u>Note</u>
         <ul>
-          On this demo web application please do not exceed the number 15 for the [M](columns size) param, for showing purposes.  
+          On this demo web application please do not exceed the number 25 for the [M](columns size) param, for showing purposes.  
+        </ul>
+        <u>Example</u>
+        <ul style="list-style: none;">
+          <li>I 29 3</li>
+          <li>H 3 4 1 C</li>
+          <li>L 2 2 C</li>
+          <li>L 3 2 C</li>
+          <li>H 3 4 3 C</li>
+          <li>L 7 1 A</li>
+          <li>D 7 2 6 3 A</li>
+          <li>D 7 2 8 3 A</li>
+          <li>H 6 8 2 A</li>
+          <li>V 10 1 3 R</li>
+          <li>H 11 12 1 R</li>
+          <li>D 11 2 12 3 R</li>
+          <li>L 12 2 R</li>
+          <li>D 14 1 15 2 W</li>
+          <li>D 16 2 15 3 W</li>
+          <li>V 17 3 2 W</li>
+          <li>L 18 1 W</li>
+          <li>D 21 1 20 2 G</li>
+          <li>D 22 2 21 3 G</li>
+          <li>D 24 1 25 2 W</li>
+          <li>D 26 2 25 3 W</li>
+          <li>V 27 3 2 W</li>
+          <li>L 28 1 W</li>
+          <li>S</li>
         </ul>
       </div>
       <div class="modal-footer">
