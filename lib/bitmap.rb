@@ -47,7 +47,7 @@ class Bitmap
 	      		draw_pixel(pixel_position,y1,colour)
 	      		y1 = y1 + 1
 	      	end
-	    elsif x1 <= x2 and y1 >= y2
+	    elsif x1 < x2 and y1 > y2
 	    	for pixel_position in (x1..x2)
 	      		draw_pixel(pixel_position,y1,colour)
 	      		y1 = y1 - 1
