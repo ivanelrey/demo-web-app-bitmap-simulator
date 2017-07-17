@@ -184,7 +184,7 @@ class FileManager
     "invalid_parameters" => "Number of parameters for this command is ",
     "wrong_param" => "Wrong param ",
     "not_in_range" => "The current param must be in range",
-    "not_an_integer" => "The current param must be an integer.",
+    "not_an_integer" => "The current param must be a positive integer.",
     "not_a_capital_letter" => "Param must be a Capital letter (A .. Z).",
     "wrong_pixels_for_diagonal" => "The given pixels are not on the same diagonal line." 
   }.freeze
