@@ -1,4 +1,4 @@
-# Bitmap edito demo web applicaion
+# Bitmap editor demo web application
 
 * Navigate to the original [Bitmap Editor](https://github.com/ivanelrey/bitmap-simulator) repository.
 
