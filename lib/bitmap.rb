@@ -55,12 +55,33 @@ class Bitmap
 	    end
 	end
 
+	def fill_command(x1, y1 , colour)
+		old = bitmap[y1-1][x1-1]
+		@bitmap.each_with_index do |row,indexx|
+	      row.each_with_index do |cell,indexy|
+	      	if indexx == y1 -1 
+	        	if cell == old
+	        		@bitmap[indexx][indexy] = colour
+	        	end
+	      	end
+	      end
+	    end
+	    @bitmap.each_with_index do |row,indexx|
+	      row.each_with_index do |cell,indexy|
+	      	if indexy == x1 -1 
+	        	if cell == old
+	        		@bitmap[indexx][indexy] = colour
+	        	end
+	      	end
+	      end
+	    end
+	end
+
 	def clear_bitmap
 		create_bitmap # Reinitilialize the bitmap
 	end
 
 	def print_bitmap
-		puts "------------------------- Command 'S' executed -------------------------"
     	@bitmap.each do |row|
 	      row.each do |cell|
 	        print cell 

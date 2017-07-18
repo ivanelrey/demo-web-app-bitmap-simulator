@@ -37,9 +37,12 @@ class BitmapEditor
         @b.draw_horizontal_segment(line[1].to_i, line[2].to_i, line[3].to_i, line[4])
       when f.draw_diagonal_segment
         @b.draw_diagonal_segment(line[1].to_i, line[2].to_i, line[3].to_i, line[4].to_i, line[5])
+      when f.fill
+        @b.fill_command(line[1].to_i, line[2].to_i, line[3])
       when f.clear
         @b.clear_bitmap
       when f.show_command
+        puts "------------------------- Command 'S' executed -------------------------"
         @b.print_bitmap
       end
     end

@@ -2,7 +2,7 @@ class FileManager
 	require 'json'
 	attr_accessor :init_colour, :init_bitmap, :colour_pixel, :draw_vertical_segment,
                   :draw_horizontal_segment,:draw_diagonal_segment, :show_command, :clear, :max_rows, :max_columns, :file,
-                  :errors_found_in_file, :given_rows_number, :given_cols_number, :show_command_included
+                  :errors_found_in_file, :given_rows_number, :given_cols_number, :show_command_included, :fill
 
 	def initialize(file)
 		@file = file
@@ -27,6 +27,7 @@ class FileManager
 	    @max_columns = data["max_columns"]
     	@max_rows = data["max_rows"]
     	@draw_diagonal_segment = data["draw_diagonal_segment"]
+    	@fill = data["fill"]
   	end
 
   	def remove_blank_lines_from_file
@@ -61,6 +62,8 @@ class FileManager
 			check_show_command(line, line_number)
 		when @draw_diagonal_segment
 			check_draw_diagonal_segment_command(line, line_number)
+		when @fill
+			check_fill_command(line, line_number)
 		else
 		  	if (line[0] != line[0].upcase)
 				@errors_found_in_file << "#{Errors.fetch("error_in_line")}#{line_number}: " + "#{Errors.fetch("found_lower_case")}"
@@ -118,6 +121,14 @@ class FileManager
 	      check_param_is_int_and_in_range(1, @given_rows_number, line_number, line[4])
 	      check_if_pixels_create_diagonal_line(line[1], line[2], line[3], line[4], line_number)
 	      check_colour_param_is_capital_letter(line[5], line_number)
+	    end
+  	end
+
+  	def check_fill_command(line, line_number)
+	    if check_params_size(line.size - 1, 3, line_number) and @bitmap_initialized
+	      check_param_is_int_and_in_range(1, @given_cols_number, line_number, line[1])
+	      check_param_is_int_and_in_range(1, @given_rows_number, line_number, line[2])
+	      check_colour_param_is_capital_letter(line[3], line_number)
 	    end
   	end
 

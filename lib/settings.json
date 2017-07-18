@@ -8,5 +8,6 @@
   "init_colour": "O",
   "max_rows": 250,
   "max_columns": 250,
-  "draw_diagonal_segment": "D"
+  "draw_diagonal_segment": "D",
+  "fill": "F"
 }
